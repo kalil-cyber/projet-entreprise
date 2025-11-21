@@ -3,159 +3,162 @@
     var stats = ViewBag.Stats as dynamic;
 }
 
-<!-- Message de Bienvenue Très Visible - Moderne -->
-<div class="alert alert-success alert-modern alert-dismissible fade show shadow-lg mb-4 animate-slide-in-left" role="alert" style="font-size: 1.1rem; background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);">
-    <div class="d-flex align-items-center">
-        <div class="me-3">
-            <i class="bi bi-check-circle-fill" style="font-size: 2.5rem; color: #28a745; animation: pulse 2s infinite;"></i>
+<!-- Hero Section Centré et Moderne -->
+<div class="hero-home text-center mb-5 py-5">
+    <div class="hero-content">
+        <div class="hero-icon mb-4">
+            <i class="bi bi-building-fill"></i>
         </div>
-        <div class="flex-grow-1">
-            <strong class="d-block mb-2" style="font-size: 1.2rem; color: #155724;">✅ Application Fonctionnelle - Prête pour le Contrôle</strong>
-            <span class="d-block" style="color: #155724;">Système de Gestion d'Entreprise développé avec ASP.NET Core MVC - Toutes les fonctionnalités sont opérationnelles !</span>
+        <h1 class="display-3 fw-bold mb-3 text-white">Système de Gestion d'Entreprise</h1>
+        <p class="lead mb-4 text-white-50" style="font-size: 1.3rem;">
+            Gérez efficacement vos départements, salariés et projets avec une interface moderne et intuitive
+        </p>
+        <div class="hero-badges mb-4">
+            <span class="badge bg-light text-dark px-3 py-2 me-2">
+                <i class="bi bi-check-circle-fill text-success me-1"></i>Application Fonctionnelle
+            </span>
+            <span class="badge bg-light text-dark px-3 py-2 me-2">
+                <i class="bi bi-shield-check text-primary me-1"></i>Sécurisée
+            </span>
+            <span class="badge bg-light text-dark px-3 py-2">
+                <i class="bi bi-lightning-charge text-warning me-1"></i>Performante
+            </span>
         </div>
-    </div>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-
-<!-- Hero Section Moderne avec Animations -->
-<div class="row mb-4 animate-fade-in-up">
-    <div class="col-12">
-        <div class="card border-0 shadow-lg mb-0 hero-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 1rem;">
-            <div class="card-body text-white p-4 p-md-5 hero-content">
-                <div class="row align-items-center">
-                    <div class="col-md-8">
-                        <div class="d-flex align-items-center mb-3 animate-fade-in">
-                            <div class="p-3 glass-effect rounded-3 me-3 hover-glow" style="border-radius: 1rem !important;">
-                                <i class="bi bi-building" style="font-size: 2.5rem; animation: pulse 3s infinite;"></i>
-                            </div>
-                            <h1 class="display-5 fw-bold mb-0" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">Système de Gestion d'Entreprise</h1>
-                        </div>
-                        <p class="lead mb-4" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.2);">
-                            Gérez efficacement vos départements, salariés et projets en un seul endroit avec une interface moderne et intuitive.
-                        </p>
-                        <div class="d-flex flex-wrap gap-2">
-                            <a href="/Departements" class="btn btn-light btn-modern hover-lift">
-                                <span><i class="bi bi-rocket-takeoff me-2"></i>Commencer</span>
-                            </a>
-                            <a href="#features" class="btn btn-outline-light btn-modern hover-lift">
-                                <span><i class="bi bi-info-circle me-2"></i>En savoir plus</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-4 text-center mt-4 mt-md-0">
-                        <div class="glass-effect p-4 rounded-3" style="border-radius: 1rem !important;">
-                            <i class="bi bi-graph-up-arrow" style="font-size: 4rem; opacity: 0.8;"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="hero-actions">
+            <a href="/Departements" class="btn btn-light btn-lg me-2 px-4 py-3">
+                <i class="bi bi-rocket-takeoff me-2"></i>Commencer
+            </a>
+            <a href="#stats" class="btn btn-outline-light btn-lg px-4 py-3">
+                <i class="bi bi-graph-up me-2"></i>Voir les Statistiques
+            </a>
         </div>
     </div>
 </div>
 
-<!-- Stats Cards - Design Moderne avec Animations -->
+
+<!-- Section Statistiques Centrées -->
 @if (stats != null)
 {
-    <div class="row g-3 mb-4">
-        <div class="col-lg-3 col-md-6 col-sm-12 mb-3 animate-fade-in-up" style="animation-delay: 0.1s;">
-            <div class="card stats-card shadow-sm border-0" style="border-top: 4px solid #667eea !important;">
-                <div class="card-body text-center p-4">
-                    <div class="mb-3">
-                        <i class="bi bi-diagram-3 stats-icon" style="font-size: 2.5rem; color: #667eea;"></i>
+    <section id="stats" class="mb-5">
+        <div class="text-center mb-4">
+            <h2 class="h2 fw-bold mb-2">Statistiques en Temps Réel</h2>
+            <p class="text-muted">Vue d'ensemble de votre entreprise</p>
+        </div>
+        <div class="row g-4 justify-content-center">
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card stats-card text-center border-0 shadow-lg h-100" style="border-top: 5px solid #667eea !important;">
+                    <div class="card-body p-4">
+                        <div class="stats-icon-wrapper mb-3">
+                            <div class="stats-icon-circle" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                <i class="bi bi-diagram-3 text-white" style="font-size: 2.5rem;"></i>
+                            </div>
+                        </div>
+                        <div class="stats-number h1 fw-bold mb-2" style="color: #667eea;">@stats.TotalDepartements</div>
+                        <div class="stats-label text-muted text-uppercase fw-semibold small">Départements</div>
                     </div>
-                    <div class="h2 fw-bold mb-1" style="color: #667eea;">@stats.TotalDepartements</div>
-                    <div class="text-muted small text-uppercase fw-semibold">Départements</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card stats-card text-center border-0 shadow-lg h-100" style="border-top: 5px solid #10b981 !important;">
+                    <div class="card-body p-4">
+                        <div class="stats-icon-wrapper mb-3">
+                            <div class="stats-icon-circle" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                                <i class="bi bi-people text-white" style="font-size: 2.5rem;"></i>
+                            </div>
+                        </div>
+                        <div class="stats-number h1 fw-bold mb-2" style="color: #10b981;">@stats.TotalSalaries</div>
+                        <div class="stats-label text-muted text-uppercase fw-semibold small">Salariés</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card stats-card text-center border-0 shadow-lg h-100" style="border-top: 5px solid #f59e0b !important;">
+                    <div class="card-body p-4">
+                        <div class="stats-icon-wrapper mb-3">
+                            <div class="stats-icon-circle" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                                <i class="bi bi-folder text-white" style="font-size: 2.5rem;"></i>
+                            </div>
+                        </div>
+                        <div class="stats-number h1 fw-bold mb-2" style="color: #f59e0b;">@stats.TotalProjets</div>
+                        <div class="stats-label text-muted text-uppercase fw-semibold small">Projets</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <div class="card stats-card text-center border-0 shadow-lg h-100" style="border-top: 5px solid #06b6d4 !important;">
+                    <div class="card-body p-4">
+                        <div class="stats-icon-wrapper mb-3">
+                            <div class="stats-icon-circle" style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);">
+                                <i class="bi bi-cash-coin text-white" style="font-size: 2.5rem;"></i>
+                            </div>
+                        </div>
+                        <div class="stats-number h4 fw-bold mb-2" style="color: #06b6d4;">@(stats.SalaireMoyen > 0 ? string.Format("{0:C}", stats.SalaireMoyen) : "N/A")</div>
+                        <div class="stats-label text-muted text-uppercase fw-semibold small">Salaire Moyen</div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 mb-3 animate-fade-in-up" style="animation-delay: 0.2s;">
-            <div class="card stats-card shadow-sm border-0" style="border-top: 4px solid #10b981 !important;">
-                <div class="card-body text-center p-4">
-                    <div class="mb-3">
-                        <i class="bi bi-people stats-icon" style="font-size: 2.5rem; color: #10b981;"></i>
-                    </div>
-                    <div class="h2 fw-bold mb-1" style="color: #10b981;">@stats.TotalSalaries</div>
-                    <div class="text-muted small text-uppercase fw-semibold">Salariés</div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 mb-3 animate-fade-in-up" style="animation-delay: 0.3s;">
-            <div class="card stats-card shadow-sm border-0" style="border-top: 4px solid #f59e0b !important;">
-                <div class="card-body text-center p-4">
-                    <div class="mb-3">
-                        <i class="bi bi-folder stats-icon" style="font-size: 2.5rem; color: #f59e0b;"></i>
-                    </div>
-                    <div class="h2 fw-bold mb-1" style="color: #f59e0b;">@stats.TotalProjets</div>
-                    <div class="text-muted small text-uppercase fw-semibold">Projets</div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 col-sm-12 mb-3 animate-fade-in-up" style="animation-delay: 0.4s;">
-            <div class="card stats-card shadow-sm border-0" style="border-top: 4px solid #06b6d4 !important;">
-                <div class="card-body text-center p-4">
-                    <div class="mb-3">
-                        <i class="bi bi-cash-coin stats-icon" style="font-size: 2.5rem; color: #06b6d4;"></i>
-                    </div>
-                    <div class="h4 fw-bold mb-1" style="color: #06b6d4;">@(stats.SalaireMoyen > 0 ? string.Format("{0:C}", stats.SalaireMoyen) : "N/A")</div>
-                    <div class="text-muted small text-uppercase fw-semibold">Salaire Moyen</div>
-                </div>
-            </div>
-        </div>
-    </div>
+    </section>
 }
 
-<!-- Features Section - Design Moderne -->
-<section id="features" class="mb-4">
-    <div class="text-center mb-4">
-        <h2 class="h3 fw-bold mb-2">Fonctionnalités Principales</h2>
-        <p class="text-muted">Découvrez les outils pour gérer votre entreprise</p>
+<!-- Section Fonctionnalités Centrées -->
+<section id="features" class="mb-5">
+    <div class="text-center mb-5">
+        <h2 class="h2 fw-bold mb-2">Fonctionnalités Principales</h2>
+        <p class="text-muted lead">Découvrez les outils puissants pour gérer votre entreprise</p>
     </div>
 
-    <div class="row g-3">
-        <div class="col-lg-4 col-md-6 col-sm-12 mb-3 animate-fade-in-up" style="animation-delay: 0.1s;">
-            <div class="card feature-card h-100 shadow-sm hover-lift">
-                <div class="card-body text-center p-4">
-                    <div class="mb-3">
-                        <i class="bi bi-diagram-3 feature-icon text-primary" style="font-size: 3rem;"></i>
+    <div class="row g-4 justify-content-center">
+        <div class="col-lg-4 col-md-6">
+            <div class="card feature-card h-100 border-0 shadow-lg text-center">
+                <div class="card-body p-5">
+                    <div class="feature-icon-large mb-4">
+                        <div class="feature-icon-circle" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <i class="bi bi-diagram-3 text-white" style="font-size: 3rem;"></i>
+                        </div>
                     </div>
-                    <h3 class="h5 fw-bold mb-3">Départements</h3>
-                    <p class="text-muted mb-3">
-                        Organisez votre entreprise par départements avec une gestion claire et intuitive.
+                    <h3 class="h4 fw-bold mb-3">Gestion des Départements</h3>
+                    <p class="text-muted mb-4">
+                        Organisez votre entreprise par départements avec une gestion claire, intuitive et efficace.
                     </p>
-                    <a href="/Departements" class="btn btn-primary btn-modern">
-                        <span><i class="bi bi-arrow-right me-1"></i> Accéder</span>
+                    <a href="/Departements" class="btn btn-primary btn-lg px-4">
+                        <i class="bi bi-arrow-right me-2"></i>Accéder
                     </a>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 mb-3 animate-fade-in-up" style="animation-delay: 0.2s;">
-            <div class="card feature-card h-100 shadow-sm hover-lift">
-                <div class="card-body text-center p-4">
-                    <div class="mb-3">
-                        <i class="bi bi-people feature-icon text-success" style="font-size: 3rem;"></i>
+        <div class="col-lg-4 col-md-6">
+            <div class="card feature-card h-100 border-0 shadow-lg text-center">
+                <div class="card-body p-5">
+                    <div class="feature-icon-large mb-4">
+                        <div class="feature-icon-circle" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                            <i class="bi bi-people text-white" style="font-size: 3rem;"></i>
+                        </div>
                     </div>
-                    <h3 class="h5 fw-bold mb-3">Salariés</h3>
-                    <p class="text-muted mb-3">
-                        Gérez les informations de vos employés, leurs salaires et leurs affectations.
+                    <h3 class="h4 fw-bold mb-3">Gestion des Salariés</h3>
+                    <p class="text-muted mb-4">
+                        Gérez les informations de vos employés, leurs salaires, leurs affectations et bien plus.
                     </p>
-                    <a href="/Salaries" class="btn btn-success btn-modern">
-                        <span><i class="bi bi-arrow-right me-1"></i> Accéder</span>
+                    <a href="/Salaries" class="btn btn-success btn-lg px-4">
+                        <i class="bi bi-arrow-right me-2"></i>Accéder
                     </a>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 mb-3 animate-fade-in-up" style="animation-delay: 0.3s;">
-            <div class="card feature-card h-100 shadow-sm hover-lift">
-                <div class="card-body text-center p-4">
-                    <div class="mb-3">
-                        <i class="bi bi-folder feature-icon text-warning" style="font-size: 3rem;"></i>
+        <div class="col-lg-4 col-md-6">
+            <div class="card feature-card h-100 border-0 shadow-lg text-center">
+                <div class="card-body p-5">
+                    <div class="feature-icon-large mb-4">
+                        <div class="feature-icon-circle" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                            <i class="bi bi-folder text-white" style="font-size: 3rem;"></i>
+                        </div>
                     </div>
-                    <h3 class="h5 fw-bold mb-3">Projets</h3>
-                    <p class="text-muted mb-3">
-                        Suivez l'avancement de vos projets avec des dates de début et de fin précises.
+                    <h3 class="h4 fw-bold mb-3">Gestion des Projets</h3>
+                    <p class="text-muted mb-4">
+                        Suivez l'avancement de vos projets avec des dates précises et un suivi en temps réel.
                     </p>
-                    <a href="/Projets" class="btn btn-warning btn-modern">
-                        <span><i class="bi bi-arrow-right me-1"></i> Accéder</span>
+                    <a href="/Projets" class="btn btn-warning btn-lg px-4">
+                        <i class="bi bi-arrow-right me-2"></i>Accéder
                     </a>
                 </div>
             </div>
@@ -163,45 +166,43 @@
     </div>
 </section>
 
-<!-- About Section -->
-<div class="row">
-    <div class="col-12">
-        <div class="card shadow-sm">
-            <div class="card-header">
-                <h3 class="h5 fw-bold mb-0">
+<!-- Section À Propos Centrée -->
+<section class="mb-5">
+    <div class="card border-0 shadow-lg">
+        <div class="card-body p-5">
+            <div class="text-center mb-4">
+                <h2 class="h3 fw-bold mb-2">
                     <i class="bi bi-info-circle text-primary me-2"></i>
                     À propos du système
-                </h3>
+                </h2>
+                <p class="text-muted">Un système complet et moderne pour votre entreprise</p>
             </div>
-            <div class="card-body">
-                <p class="mb-3">Ce système de gestion vous permet de :</p>
-                <div class="row g-2">
-                    <div class="col-md-6">
-                        <div class="d-flex align-items-center p-2 bg-light rounded">
-                            <i class="bi bi-check-circle-fill text-success me-2"></i>
-                            <span class="small">Créer et gérer des départements</span>
-                        </div>
+            <div class="row g-3 justify-content-center">
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-item text-center p-3">
+                        <i class="bi bi-check-circle-fill text-success" style="font-size: 2rem;"></i>
+                        <p class="mb-0 mt-2 fw-semibold">Gestion des Départements</p>
                     </div>
-                    <div class="col-md-6">
-                        <div class="d-flex align-items-center p-2 bg-light rounded">
-                            <i class="bi bi-check-circle-fill text-success me-2"></i>
-                            <span class="small">Ajouter et modifier des salariés</span>
-                        </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-item text-center p-3">
+                        <i class="bi bi-check-circle-fill text-success" style="font-size: 2rem;"></i>
+                        <p class="mb-0 mt-2 fw-semibold">Gestion des Salariés</p>
                     </div>
-                    <div class="col-md-6">
-                        <div class="d-flex align-items-center p-2 bg-light rounded">
-                            <i class="bi bi-check-circle-fill text-success me-2"></i>
-                            <span class="small">Suivre vos projets et leurs dates</span>
-                        </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-item text-center p-3">
+                        <i class="bi bi-check-circle-fill text-success" style="font-size: 2rem;"></i>
+                        <p class="mb-0 mt-2 fw-semibold">Suivi des Projets</p>
                     </div>
-                    <div class="col-md-6">
-                        <div class="d-flex align-items-center p-2 bg-light rounded">
-                            <i class="bi bi-check-circle-fill text-success me-2"></i>
-                            <span class="small">Visualiser les relations entre départements et salariés</span>
-                        </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-item text-center p-3">
+                        <i class="bi bi-check-circle-fill text-success" style="font-size: 2rem;"></i>
+                        <p class="mb-0 mt-2 fw-semibold">Statistiques en Temps Réel</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>
