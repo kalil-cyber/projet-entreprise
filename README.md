@@ -12,7 +12,7 @@ Application web ASP.NET Core MVC pour la gestion des départements, salariés et
 
 ## 🛠️ Technologies
 
-- ASP.NET Core 6.0
+- ASP.NET Core 8.0
 - Entity Framework Core
 - SQLite (base de données)
 - Bootstrap 5

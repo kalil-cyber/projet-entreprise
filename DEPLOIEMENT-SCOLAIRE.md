@@ -24,7 +24,7 @@
    - Choisissez "Deploy from GitHub repo"
    - Autorisez Railway à accéder à votre compte GitHub
    - Sélectionnez votre repository
-   - Railway détecte automatiquement .NET 6.0 et déploie !
+   - Railway détecte automatiquement .NET 8.0 et déploie !
 
 4. **Votre lien sera :** `https://votre-projet.up.railway.app`
 
@@ -39,7 +39,7 @@
 3. Cliquez sur "New" → "Web Service"
 4. Connectez votre compte GitHub
 5. Sélectionnez votre repository
-6. Render détecte automatiquement le projet .NET 6.0
+6. Render détecte automatiquement le projet .NET 8.0
 7. Cliquez sur "Create Web Service"
 
 **Votre URL :** `https://votre-projet.onrender.com`
@@ -55,7 +55,7 @@
 - Render : `https://[nom-projet].onrender.com`
 
 **Exemple de présentation :**
-> "J'ai développé une application de gestion d'entreprise avec ASP.NET Core 6.0 MVC. 
+> "J'ai développé une application de gestion d'entreprise avec ASP.NET Core 8.0 MVC. 
 > L'application est déployée et accessible en ligne à l'adresse : 
 > [votre-lien]"
 
@@ -67,7 +67,7 @@
 - **Render** : Gratuit mais peut être lent au premier démarrage
 - Les deux sont parfaits pour des projets scolaires !
 - La base de données SQLite sera créée automatiquement lors du premier lancement
-- **.NET 6.0** est automatiquement détecté par les deux plateformes
+- **.NET 8.0** est automatiquement détecté par les deux plateformes
 
 ---
 
