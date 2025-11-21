@@ -17,12 +17,7 @@ namespace mac.Controllers
 
         public IActionResult Index()
         {
-            var info = new
-            {
-                Server = "OK - Serveur fonctionne",
-                Database = "Test en cours...",
-                Timestamp = DateTime.Now
-            };
+            object info;
 
             try
             {

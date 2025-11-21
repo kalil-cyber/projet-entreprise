@@ -21,13 +21,6 @@ namespace mac.Controllers.Api
         [HttpGet]
         public async Task<ActionResult<object>> GetTest()
         {
-            var result = new
-            {
-                Server = "OK",
-                Database = "Testing...",
-                Timestamp = DateTime.Now
-            };
-
             try
             {
                 // Test de connexion à la base de données
@@ -36,7 +29,7 @@ namespace mac.Controllers.Api
                 var salariesCount = await _context.Salaries.CountAsync();
                 var projetsCount = await _context.Projets.CountAsync();
 
-                result = new
+                var result = new
                 {
                     Server = "✅ OK - Serveur fonctionne",
                     Database = canConnect ? "✅ OK - Base de données connectée" : "❌ ERREUR - Impossible de se connecter",
