@@ -28,12 +28,13 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+// Map API controllers FIRST (before MVC routes)
+app.MapControllers();
+
+// Map MVC routes
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
-// Map API controllers
-app.MapControllers();
 
 // Appliquer les migrations pour créer/mettre à jour la base de données
 using (var scope = app.Services.CreateScope())
