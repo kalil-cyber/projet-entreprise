@@ -36,6 +36,7 @@ namespace mac.Controllers
             {
                 _context.Departements.Add(departement);
                 await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = $"Le département '{departement.Nom}' a été créé avec succès.";
                 return RedirectToAction(nameof(Index));
             }
             return View(departement);
@@ -74,6 +75,7 @@ namespace mac.Controllers
                     if (!_context.Departements.Any(e => e.Id == id)) return NotFound();
                     throw;
                 }
+                TempData["SuccessMessage"] = $"Le département '{departement.Nom}' a été modifié avec succès.";
                 return RedirectToAction(nameof(Index));
             }
             return View(departement);
@@ -92,12 +94,25 @@ namespace mac.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var departement = await _context.Departements.FindAsync(id);
-            if (departement != null)
+            var departement = await _context.Departements
+                .Include(d => d.Salaries)
+                .FirstOrDefaultAsync(d => d.Id == id);
+            
+            if (departement == null)
             {
-                _context.Departements.Remove(departement);
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
+
+            // Empêcher la suppression si des salariés sont associés
+            if (departement.Salaries.Any())
+            {
+                TempData["ErrorMessage"] = $"Impossible de supprimer le département '{departement.Nom}' car il contient {departement.Salaries.Count} salarié(s).";
+                return RedirectToAction(nameof(Delete), new { id = id });
+            }
+
+            _context.Departements.Remove(departement);
+            await _context.SaveChangesAsync();
+            TempData["SuccessMessage"] = $"Le département '{departement.Nom}' a été supprimé avec succès.";
             return RedirectToAction(nameof(Index));
         }
     }

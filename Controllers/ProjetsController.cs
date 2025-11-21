@@ -29,10 +29,17 @@ namespace mac.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Projet projet)
         {
+            // Validation personnalisée : DateFin doit être après DateDebut
+            if (projet.DateFin <= projet.DateDebut)
+            {
+                ModelState.AddModelError("DateFin", "La date de fin doit être postérieure à la date de début.");
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Projets.Add(projet);
                 await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = $"Le projet '{projet.Nom}' a été créé avec succès.";
                 return RedirectToAction(nameof(Index));
             }
             return View(projet);
@@ -57,12 +64,20 @@ namespace mac.Controllers
         public async Task<IActionResult> Edit(int id, Projet projet)
         {
             if (id != projet.Id) return BadRequest();
+            
+            // Validation personnalisée : DateFin doit être après DateDebut
+            if (projet.DateFin <= projet.DateDebut)
+            {
+                ModelState.AddModelError("DateFin", "La date de fin doit être postérieure à la date de début.");
+            }
+
             if (ModelState.IsValid)
             {
                 try
                 {
                     _context.Update(projet);
                     await _context.SaveChangesAsync();
+                    TempData["SuccessMessage"] = $"Le projet '{projet.Nom}' a été modifié avec succès.";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -86,11 +101,15 @@ namespace mac.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var projet = await _context.Projets.FindAsync(id);
-            if (projet != null)
+            if (projet == null)
             {
-                _context.Projets.Remove(projet);
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
+
+            var nomProjet = projet.Nom;
+            _context.Projets.Remove(projet);
+            await _context.SaveChangesAsync();
+            TempData["SuccessMessage"] = $"Le projet '{nomProjet}' a été supprimé avec succès.";
             return RedirectToAction(nameof(Index));
         }
     }

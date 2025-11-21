@@ -34,10 +34,17 @@ namespace mac.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Salarie salarie)
         {
+            // Validation : Vérifier que le département existe
+            if (salarie.DepartementId > 0 && !await _context.Departements.AnyAsync(d => d.Id == salarie.DepartementId))
+            {
+                ModelState.AddModelError("DepartementId", "Le département sélectionné n'existe pas.");
+            }
+
             if (ModelState.IsValid)
             {
                 _context.Salaries.Add(salarie);
                 await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = $"Le salarié '{salarie.Prenom} {salarie.Nom}' a été créé avec succès.";
                 return RedirectToAction(nameof(Index));
             }
             ViewData["DepartementId"] = new SelectList(_context.Departements, "Id", "Nom", salarie.DepartementId);
@@ -66,12 +73,20 @@ namespace mac.Controllers
         public async Task<IActionResult> Edit(int id, Salarie salarie)
         {
             if (id != salarie.Id) return BadRequest();
+            
+            // Validation : Vérifier que le département existe
+            if (salarie.DepartementId > 0 && !await _context.Departements.AnyAsync(d => d.Id == salarie.DepartementId))
+            {
+                ModelState.AddModelError("DepartementId", "Le département sélectionné n'existe pas.");
+            }
+
             if (ModelState.IsValid)
             {
                 try
                 {
                     _context.Update(salarie);
                     await _context.SaveChangesAsync();
+                    TempData["SuccessMessage"] = $"Le salarié '{salarie.Prenom} {salarie.Nom}' a été modifié avec succès.";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -98,11 +113,15 @@ namespace mac.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var salarie = await _context.Salaries.FindAsync(id);
-            if (salarie != null)
+            if (salarie == null)
             {
-                _context.Salaries.Remove(salarie);
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
+
+            var nomComplet = $"{salarie.Prenom} {salarie.Nom}";
+            _context.Salaries.Remove(salarie);
+            await _context.SaveChangesAsync();
+            TempData["SuccessMessage"] = $"Le salarié '{nomComplet}' a été supprimé avec succès.";
             return RedirectToAction(nameof(Index));
         }
     }
