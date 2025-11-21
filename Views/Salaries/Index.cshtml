@@ -41,12 +41,12 @@
 
 @if (Model.Any())
 {
-    <!-- Table Bootstrap -->
-    <div class="card shadow-sm border-0">
+    <!-- Table Moderne -->
+    <div class="card">
         <div class="card-body p-0">
             <div class="table-responsive">
-                <table class="table table-hover mb-0">
-                    <thead class="table-dark">
+                <table class="table-modern">
+                    <thead>
                         <tr>
                             <th>Nom</th>
                             <th>Prénom</th>
@@ -70,15 +70,15 @@
                                 </td>
                                 <td>@item.Prenom</td>
                                 <td>
-                                    <span class="badge bg-info">@item.Age ans</span>
+                                    <span class="badge badge-info">@item.Age ans</span>
                                 </td>
                                 <td>
-                                    <span class="badge bg-success">@item.Salaire.ToString("C")</span>
+                                    <span class="badge badge-success">@item.Salaire.ToString("C")</span>
                                 </td>
                                 <td>
                                     @if (item.Departement != null)
                                     {
-                                        <span class="badge bg-primary">@item.Departement.Nom</span>
+                                        <span class="badge badge-primary">@item.Departement.Nom</span>
                                     }
                                     else
                                     {

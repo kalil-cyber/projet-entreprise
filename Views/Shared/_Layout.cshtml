@@ -13,7 +13,10 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     
-    <!-- Custom CSS -->
+    <!-- Modern UI CSS Template -->
+    <link rel="stylesheet" href="~/css/modern-ui.css?v=@DateTime.Now.Ticks" asp-append-version="true" />
+    
+    <!-- Custom Site CSS (Legacy) -->
     <link rel="stylesheet" href="~/css/site.css?v=@DateTime.Now.Ticks" asp-append-version="true" />
 </head>
 <body>
@@ -56,9 +59,9 @@
         </nav>
     </header>
 
-    <!-- MAIN CONTENT - Centré -->
+    <!-- MAIN CONTENT - Container Fluide -->
     <main class="site-main">
-        <div class="container my-4">
+        <div class="container-fluid">
             @RenderBody()
         </div>
     </main>
@@ -81,27 +84,21 @@
         </div>
     </footer>
 
-    <!-- Bootstrap 5 JS Bundle - Chargé à la fin du body -->
+    <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" 
             crossorigin="anonymous"></script>
     
+    <!-- Modern UI JavaScript -->
+    <script src="~/js/modern-ui.js?v=@DateTime.Now.Ticks" asp-append-version="true"></script>
+    
     <script>
-        // Fonction pour toggle sidebar
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            if (sidebar) {
-                sidebar.classList.toggle('show');
-            }
-        }
-        
-        // Vérification du chargement de Bootstrap
+        // Initialisation globale
         document.addEventListener('DOMContentLoaded', function() {
-            if (typeof bootstrap === 'undefined') {
-                console.warn('Bootstrap JS non chargé');
-            } else {
-                console.log('Bootstrap 5 chargé avec succès');
+            if (typeof bootstrap !== 'undefined') {
+                console.log('✅ Bootstrap 5 chargé avec succès');
             }
+            console.log('✅ Modern UI Template chargé - Version @DateTime.Now.ToString("HH:mm:ss")');
         });
     </script>
     @RenderSection("Scripts", required: false)

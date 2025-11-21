@@ -41,12 +41,12 @@
 
 @if (Model.Any())
 {
-    <!-- Table Bootstrap -->
-    <div class="card shadow-sm border-0">
+    <!-- Table Moderne -->
+    <div class="card">
         <div class="card-body p-0">
             <div class="table-responsive">
-                <table class="table table-hover mb-0">
-                    <thead class="table-dark">
+                <table class="table-modern">
+                    <thead>
                         <tr>
                             <th>Nom du Projet</th>
                             <th>Description</th>
@@ -75,13 +75,13 @@
                                     </span>
                                 </td>
                                 <td>
-                                    <span class="badge bg-info">@item.DateDebut.ToString("dd/MM/yyyy")</span>
+                                    <span class="badge badge-info">@item.DateDebut.ToString("dd/MM/yyyy")</span>
                                 </td>
                                 <td>
-                                    <span class="badge bg-success">@item.DateFin.ToString("dd/MM/yyyy")</span>
+                                    <span class="badge badge-success">@item.DateFin.ToString("dd/MM/yyyy")</span>
                                 </td>
                                 <td>
-                                    <span class="badge bg-primary">@duree jours</span>
+                                    <span class="badge badge-primary">@duree jours</span>
                                 </td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group">
