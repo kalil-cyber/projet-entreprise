@@ -5,7 +5,7 @@ using mac.Data;
 namespace mac.Controllers.Api
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/stats")]
     [Produces("application/json")]
     public class StatsApiController : ControllerBase
     {
@@ -16,7 +16,7 @@ namespace mac.Controllers.Api
             _context = context;
         }
 
-        // GET: api/StatsApi
+        // GET: api/stats
         [HttpGet]
         public async Task<ActionResult<object>> GetStats()
         {

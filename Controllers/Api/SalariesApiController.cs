@@ -6,7 +6,7 @@ using mac.Models;
 namespace mac.Controllers.Api
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/salaries")]
     [Produces("application/json")]
     public class SalariesApiController : ControllerBase
     {
@@ -17,7 +17,7 @@ namespace mac.Controllers.Api
             _context = context;
         }
 
-        // GET: api/SalariesApi
+        // GET: api/salaries
         [HttpGet]
         public async Task<ActionResult<IEnumerable<object>>> GetSalaries()
         {
@@ -43,7 +43,7 @@ namespace mac.Controllers.Api
             return Ok(salaries);
         }
 
-        // GET: api/SalariesApi/5
+        // GET: api/salaries/5
         [HttpGet("{id}")]
         public async Task<ActionResult<object>> GetSalarie(int id)
         {

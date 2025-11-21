@@ -6,7 +6,7 @@ using mac.Models;
 namespace mac.Controllers.Api
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/departements")]
     [Produces("application/json")]
     public class DepartementsApiController : ControllerBase
     {
@@ -36,7 +36,7 @@ namespace mac.Controllers.Api
             return Ok(departements);
         }
 
-        // GET: api/DepartementsApi/5
+        // GET: api/departements/5
         [HttpGet("{id}")]
         public async Task<ActionResult<object>> GetDepartement(int id)
         {
