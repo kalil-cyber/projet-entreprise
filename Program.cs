@@ -32,6 +32,9 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+// Map API controllers
+app.MapControllers();
+
 // Appliquer les migrations pour créer/mettre à jour la base de données
 using (var scope = app.Services.CreateScope())
 {
