@@ -12,7 +12,7 @@ Application web ASP.NET Core MVC pour la gestion des départements, salariés et
 
 ## 🛠️ Technologies
 
-- ASP.NET Core 8.0
+- ASP.NET Core 10.0
 - Entity Framework Core
 - SQLite (base de données)
 - Bootstrap 5
@@ -22,8 +22,8 @@ Application web ASP.NET Core MVC pour la gestion des départements, salariés et
 
 1. Cloner le repository
 ```bash
-git clone <votre-repo>
-cd mac
+git clone https://github.com/kalil-cyber/projet-entreprise.git
+cd projet-entreprise
 ```
 
 2. Restaurer les packages
