@@ -767,3 +767,80 @@ footer {
     transform: translateY(-5px);
   }
 }
+
+/* ============================================
+   AMELIORATIONS VISUELLES SUPPLEMENTAIRES
+   ============================================ */
+body {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.main-content {
+  background: transparent;
+}
+
+.container-fluid {
+  background: transparent;
+}
+
+/* Amélioration des cartes */
+.card {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Amélioration de la sidebar */
+.sidebar {
+  background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Amélioration du header */
+.top-header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Effet de brillance sur les boutons */
+.btn-modern {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-modern::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-modern:hover::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* Animation de chargement */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container-fluid > * {
+  animation: fadeIn 0.6s ease-out;
+}
