@@ -1,0 +1,106 @@
+@model IEnumerable<mac.Models.Salarie>
+
+@{
+    ViewData["Title"] = "Liste des Salariés";
+}
+
+<!-- Header avec Bootstrap -->
+<div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
+    <div>
+        <h2 class="h3 fw-bold mb-2 d-flex align-items-center gap-2">
+            <span class="badge bg-success p-2 rounded">
+                <i class="bi bi-people text-white"></i>
+            </span>
+            Salariés
+        </h2>
+        <p class="text-muted mb-0">Gérez les informations de vos employés</p>
+    </div>
+    <a asp-action="Create" class="btn btn-success">
+        <i class="bi bi-person-plus me-2"></i>
+        Nouveau Salarié
+    </a>
+</div>
+
+@if (Model.Any())
+{
+    <!-- Table Bootstrap -->
+    <div class="card shadow-sm border-0">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Âge</th>
+                            <th>Salaire</th>
+                            <th>Département</th>
+                            <th class="text-center">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center fw-bold me-2" style="width: 40px; height: 40px;">
+                                            @item.Nom.Substring(0, 1).ToUpper()
+                                        </div>
+                                        <strong>@item.Nom</strong>
+                                    </div>
+                                </td>
+                                <td>@item.Prenom</td>
+                                <td>
+                                    <span class="badge bg-info">@item.Age ans</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-success">@item.Salaire.ToString("C")</span>
+                                </td>
+                                <td>
+                                    @if (item.Departement != null)
+                                    {
+                                        <span class="badge bg-primary">@item.Departement.Nom</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">Aucun</span>
+                                    }
+                                </td>
+                                <td class="text-center">
+                                    <div class="btn-group" role="group">
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info" title="Détails">
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning" title="Modifier">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger" title="Supprimer">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="card shadow-sm border-0">
+        <div class="card-body text-center py-5">
+            <div class="mb-3">
+                <i class="bi bi-people text-muted" style="font-size: 4rem;"></i>
+            </div>
+            <h3 class="h5 fw-bold mb-2">Aucun salarié enregistré</h3>
+            <p class="text-muted mb-4">Commencez par ajouter votre premier salarié à votre système de gestion.</p>
+            <a asp-action="Create" class="btn btn-success">
+                <i class="bi bi-person-plus me-2"></i>
+                Créer le premier salarié
+            </a>
+        </div>
+    </div>
+}

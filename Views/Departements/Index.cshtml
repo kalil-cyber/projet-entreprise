@@ -1,0 +1,77 @@
+@model IEnumerable<mac.Models.Departement>
+
+@{
+    ViewData["Title"] = "Liste des Départements";
+}
+
+<!-- Header harmonisé -->
+<div class="page-header">
+    <div>
+        <h2 class="d-flex align-items-center gap-2">
+            <span class="badge bg-primary p-2 rounded">
+                <i class="bi bi-diagram-3 text-white"></i>
+            </span>
+            Départements
+        </h2>
+        <p>Gérez les départements de votre entreprise</p>
+    </div>
+    <a asp-action="Create" class="btn btn-primary">
+        <i class="bi bi-plus-circle me-2"></i>
+        Nouveau Département
+    </a>
+</div>
+
+@if (Model.Any())
+{
+    <!-- Cards Bootstrap -->
+    <div class="row g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card shadow-sm border-0 h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-start mb-3">
+                            <div class="bg-primary bg-opacity-10 p-3 rounded-3 me-3">
+                                <i class="bi bi-building text-primary fs-4"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h5 class="card-title fw-bold mb-1">@item.Nom</h5>
+                                <p class="text-muted small mb-0">
+                                    <i class="bi bi-people"></i>
+                                    <strong>@item.Salaries.Count</strong> salarié(s)
+                                </p>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-2 pt-3 border-top">
+                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info flex-fill">
+                                <i class="bi bi-eye me-1"></i> Détails
+                            </a>
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-primary flex-fill">
+                                <i class="bi bi-pencil me-1"></i> Modifier
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">
+                                <i class="bi bi-trash"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <div class="card shadow-sm border-0">
+        <div class="card-body text-center py-5">
+            <div class="mb-3">
+                <i class="bi bi-diagram-3 text-muted" style="font-size: 4rem;"></i>
+            </div>
+            <h3 class="h5 fw-bold mb-2">Aucun département enregistré</h3>
+            <p class="text-muted mb-4">Commencez par créer votre premier département pour organiser votre entreprise.</p>
+            <a asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle me-2"></i>
+                Créer le premier département
+            </a>
+        </div>
+    </div>
+}

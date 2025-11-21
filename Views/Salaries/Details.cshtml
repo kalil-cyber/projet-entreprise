@@ -1,0 +1,88 @@
+@model mac.Models.Salarie
+
+@{
+    ViewData["Title"] = "Détails du Salarié";
+}
+
+<div class="page-header">
+    <div>
+        <h2>
+            <i class="bi bi-person me-2"></i>Détails du Salarié
+        </h2>
+        <p>Informations complètes sur le salarié</p>
+    </div>
+    <div class="d-flex gap-2">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-success">
+            <i class="bi bi-pencil me-2"></i> Modifier
+        </a>
+        <a asp-action="Index" class="btn btn-secondary">
+            <i class="bi bi-arrow-left me-2"></i> Retour
+        </a>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-8">
+        <div class="card shadow-sm">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="bi bi-info-circle me-2"></i>Informations Personnelles</h5>
+            </div>
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="info-box">
+                            <label>Nom</label>
+                            <div class="value">@Model.Nom</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-box">
+                            <label>Prénom</label>
+                            <div class="value">@Model.Prenom</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-box">
+                            <label>Âge</label>
+                            <div>
+                                <span class="badge bg-info fs-6">@Model.Age ans</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-box">
+                            <label>Salaire</label>
+                            <div>
+                                <span class="badge bg-success fs-6">@Model.Salaire.ToString("C")</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-box">
+                            <label>Département</label>
+                            <div>
+                                @if (Model.Departement != null)
+                                {
+                                    <span class="badge bg-primary fs-6">@Model.Departement.Nom</span>
+                                    <a href="/Departements/Details/@Model.Departement.Id" class="btn btn-sm btn-link ms-2">
+                                        <i class="bi bi-arrow-right"></i>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <span class="text-muted">Aucun département assigné</span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="info-box">
+                            <label>Créé le</label>
+                            <div class="fw-semibold">@Model.CreatedAt.ToString("dd/MM/yyyy à HH:mm")</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,90 @@
+@model mac.Models.Salarie
+
+@{
+    ViewData["Title"] = "Modifier le Salarié";
+}
+
+<div class="page-header">
+    <div>
+        <h2>
+            <i class="bi bi-pencil me-2"></i>Modifier le Salarié
+        </h2>
+        <p>Modifiez les informations du salarié</p>
+    </div>
+    <a asp-action="Index" class="btn btn-secondary">
+        <i class="bi bi-arrow-left me-2"></i> Retour
+    </a>
+</div>
+
+<div class="row">
+    <div class="col-lg-8 col-xl-7">
+        <div class="card shadow-sm">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="bi bi-person me-2"></i>Informations du Salarié</h5>
+            </div>
+            <div class="card-body">
+                <form asp-action="Edit">
+                    <input type="hidden" asp-for="Id" />
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger" role="alert"></div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Nom" class="form-label">
+                                <i class="bi bi-person me-2"></i>Nom
+                            </label>
+                            <input asp-for="Nom" class="form-control" />
+                            <span asp-validation-for="Nom" class="text-danger small"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Prenom" class="form-label">
+                                <i class="bi bi-person me-2"></i>Prénom
+                            </label>
+                            <input asp-for="Prenom" class="form-control" />
+                            <span asp-validation-for="Prenom" class="text-danger small"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Age" class="form-label">
+                                <i class="bi bi-calendar me-2"></i>Âge
+                            </label>
+                            <input asp-for="Age" type="number" class="form-control" min="18" max="100" />
+                            <span asp-validation-for="Age" class="text-danger small"></span>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label asp-for="Salaire" class="form-label">
+                                <i class="bi bi-cash-coin me-2"></i>Salaire
+                            </label>
+                            <input asp-for="Salaire" type="number" step="0.01" class="form-control" />
+                            <span asp-validation-for="Salaire" class="text-danger small"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label asp-for="DepartementId" class="form-label">
+                            <i class="bi bi-building me-2"></i>Département
+                        </label>
+                        <select asp-for="DepartementId" class="form-select" asp-items="ViewBag.DepartementId">
+                            <option value="">-- Sélectionner un département --</option>
+                        </select>
+                        <span asp-validation-for="DepartementId" class="text-danger small"></span>
+                    </div>
+                    
+                    <div class="d-flex gap-2 mt-4">
+                        <button type="submit" class="btn btn-success">
+                            <i class="bi bi-check-circle me-2"></i> Enregistrer les modifications
+                        </button>
+                        <a asp-action="Index" class="btn btn-outline-secondary">
+                            <i class="bi bi-x-circle me-2"></i> Annuler
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
